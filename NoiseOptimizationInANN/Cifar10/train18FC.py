@@ -18,7 +18,7 @@ from torch import nn
 import torch.optim as optim
 import torch.nn.init
 import math
-os.environ["CUDA_VISIBLE_DEVICES"] = '6'
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 device = Resnet18.device
 
 if __name__ == '__main__':

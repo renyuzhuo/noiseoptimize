@@ -19,15 +19,15 @@ import torch.optim as optim
 import torch.nn.init
 import math
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '3'
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 device = Resnet34.device
 
 if __name__ == '__main__':
 
     """
     resnet18_model = [Resnet34.getResnetPlus34A, Resnet34.getResnetN34A]
-
-    resnet18_name = ['Resnet34.getResnetPlus34A', 'Resnet34.getResnetN34A']"""
+    resnet18_name = ['Resnet34.getResnetPlus34A', 'Resnet34.getResnetN34A']
+    """
     resnet18_model = [Resnet34.getResnetN34A]
 
     resnet18_name = ['Resnet34.getResnetN34A']
