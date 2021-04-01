@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 import Resnet18
 import torch
 from torch.autograd import Variable

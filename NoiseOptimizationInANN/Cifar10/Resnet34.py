@@ -1,3 +1,5 @@
+# This Python file uses the following encoding: utf-8
+
 import torch
 from torch.autograd import Variable
 from torch.autograd import Function
