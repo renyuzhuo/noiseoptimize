@@ -1,13 +1,10 @@
-import torch
-from skimage import io
-import numpy as np
-from torch.utils.data import Dataset
-import random
 from torch.utils.data import Dataset, DataLoader
-from torchvision import models, utils, datasets, transforms
-import sys
 import os
+import sys
+
 from PIL import Image
+from torch.utils.data import Dataset, DataLoader
+from torchvision import transforms
 
 
 class TinyImageNet(Dataset):

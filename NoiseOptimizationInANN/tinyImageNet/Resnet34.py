@@ -17,7 +17,10 @@ import torch.optim as optim
 import torch.nn.init
 import math
 
-device = torch.device('cuda:0')
+if torch.cuda.is_available():
+    device = torch.device('cuda:0')
+else:
+    device = None
 
 
 class UnOptimizedNoiseLayer(nn.Module):
@@ -401,6 +404,7 @@ class ResNetPlus34FC(nn.Module):
 
 def getResnetPlus34FC():
     return ResNetPlus34FC(ResBlockPlusFC)
+
 
 class ResBlockPlusA(nn.Module):
     def __init__(self, in_channels, out_channels, stride=1):

@@ -18,7 +18,12 @@ import torch.nn.init
 import math
 import pickle
 import Resnet18
-os.environ["CUDA_VISIBLE_DEVICES"] = '7'
+
+if torch.cuda.is_available():
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+else:
+    pass
+
 device = Resnet18.device
 
 

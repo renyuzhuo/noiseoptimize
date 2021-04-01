@@ -1,25 +1,19 @@
-import Resnet34
-import LoadTinyImageNet
-import torch
-from torch.autograd import Variable
-from torch.autograd import Function
-import torch.nn as nn
-import torch.nn.functional as F
-import numpy as np
-from abc import ABCMeta, abstractmethod
-from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
-from tqdm import tqdm
 import os
-from torch.utils.data import Dataset
-import time
 import pickle as pkl
-from torch import nn
-import torch.optim as optim
-import torch.nn.init
-import math
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+import torch.nn.init
+import torch.optim as optim
+from torch import nn
+from tqdm import tqdm
+
+import LoadTinyImageNet
+import Resnet34
+
+if torch.cuda.is_available():
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+else:
+    pass
+
 device = Resnet34.device
 
 if __name__ == '__main__':
@@ -51,7 +45,7 @@ if __name__ == '__main__':
         SoftmaxWithXent = nn.CrossEntropyLoss()
         # define optimization algorithm
         optimizer = optim.SGD(model.parameters(), momentum=0.9, lr=learning_rate, weight_decay=5e-04)
-        scheduler = lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.8)
+        scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.8)
         print('{} epoch to run:{} learning rate:{}'.format(resnet18_name[j], epoches, learning_rate))
         for epoch in range(start_epoch, start_epoch + epoches):
             train_N = 0.

@@ -18,12 +18,17 @@ from torch import nn
 import torch.optim as optim
 import torch.nn.init
 import math
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+
+if torch.cuda.is_available():
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+else:
+    pass
+
 device = Resnet18.device
 
 if __name__ == '__main__':
 
-    resnet18_model = [Resnet18.getResNet18,  Resnet18.getResNet18PlusFC, Resnet18.getResNet18NFC]
+    resnet18_model = [Resnet18.getResNet18, Resnet18.getResNet18PlusFC, Resnet18.getResNet18NFC]
 
     resnet18_name = ['Resnet18.getResNet18', 'Resnet18.getResNet18PlusFC', 'Resnet18.getResNet18NFC']
 
@@ -109,5 +114,3 @@ if __name__ == '__main__':
         print('模型已经保存')
         with open('./mnist_logs/{}.pkl'.format(resnet18_name[j]), 'wb') as file:
             pkl.dump([train_loss_list, test_loss_list, acc_list], file)
-
-

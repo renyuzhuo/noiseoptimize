@@ -17,7 +17,11 @@ import torch.optim as optim
 import torch.nn.init
 import math
 
-device = torch.device('cuda:0')
+
+if torch.cuda.is_available():
+    device = torch.device('cuda:0')
+else:
+    device = None
 
 
 def LoadMNIST(root, transform, batch_size, download=True):
@@ -26,6 +30,7 @@ def LoadMNIST(root, transform, batch_size, download=True):
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
     return train_loader, test_loader
+
 
 class DenseReLU(nn.Module):
     def __init__(self):
@@ -92,8 +97,6 @@ class DensePlusSigmoid(nn.Module):
         x = nn.Sigmoid()(self.fc2(x))
         x = self.fc3(x)
         return x
-
-
 
 
 class CNN(nn.Module):
@@ -286,6 +289,7 @@ class DenseNoiseSigmoid(nn.Module):
         x = nn.Sigmoid()(self.fc2(x))
         x = self.fc3(x)
         return x
+
 
 class CNNFCN(nn.Module):
     def __init__(self):

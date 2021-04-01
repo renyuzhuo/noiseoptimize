@@ -1,23 +1,13 @@
 import torch
-from torch.autograd import Variable
-from torch.autograd import Function
-import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
-from abc import ABCMeta, abstractmethod
-from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
-from tqdm import tqdm
-import os
-from torch.utils.data import Dataset
-import time
-import pickle as pkl
-from torch import nn
-import torch.optim as optim
 import torch.nn.init
-import math
+from torch import nn
+from torch.autograd import Function
 
-device = torch.device('cuda:0')
+if torch.cuda.is_available():
+    device = torch.device('cuda:0')
+else:
+    device = None
 
 
 class UnOptimizedNoiseLayer(nn.Module):
@@ -250,6 +240,7 @@ class ResNet(nn.Module):
 def getResNet18():
     return ResNet(ResidualBlock)
 
+
 class ResidualBlockPlusFC(nn.Module):  # 继承nn.Module
     def __init__(self, inchannel, outchannel, stride=1):  # __init()中必须自己定义可学习的参数
         super(ResidualBlockPlusFC, self).__init__()  # 调用nn.Module的构造函数
@@ -318,6 +309,7 @@ class ResNetPlus18FC(nn.Module):
         out = out.view(out.size(0), -1)  # 转换为(1,512)的格式
         out = self.fc(out)
         return out
+
 
 def getResNet18PlusFC():
     return ResNetPlus18FC(ResidualBlockPlusFC)
@@ -395,8 +387,10 @@ class ResNetPlus18A(nn.Module):
         out = self.fc(out)
         return out
 
+
 def getResNet18PlusA():
     return ResNetPlus18A(ResidualBlockPlusA)
+
 
 class ResidualBlockNFC(nn.Module):  # 继承nn.Module
     def __init__(self, inchannel, outchannel, output_size, stride=1):  # __init()中必须自己定义可学习的参数
@@ -473,7 +467,6 @@ class ResNetNFC(nn.Module):
 
 def getResNet18NFC():
     return ResNetNFC(ResidualBlockNFC)
-
 
 
 class ResidualBlockNA(nn.Module):  # 继承nn.Module

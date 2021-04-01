@@ -18,7 +18,12 @@ import torch.nn.init
 import math
 import pickle
 import Resnet18
-os.environ["CUDA_VISIBLE_DEVICES"] = '7'
+
+if torch.cuda.is_available():
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+else:
+    pass
+
 device = Resnet18.device
 
 
@@ -115,7 +120,6 @@ if __name__ == '__main__':
     resnet18FC_model = [Resnet18.getResNet18NFC]
 
     resnet18FC_name = ['Resnet18.getResNet18NFC']
-
 
     model_zoo_name = [resnet18FC_name, resnet18A_name]
     noise = ['FGSM', 'LBFGS', 'PGD']

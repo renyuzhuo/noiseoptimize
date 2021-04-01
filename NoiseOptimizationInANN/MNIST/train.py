@@ -1,22 +1,13 @@
-import models
-import torch
-from torch.autograd import Variable
-from torch.autograd import Function
-import torch.nn as nn
-import torch.nn.functional as F
-import numpy as np
-from abc import ABCMeta, abstractmethod
-from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
-from tqdm import tqdm
 import os
-from torch.utils.data import Dataset
-import time
 import pickle as pkl
-from torch import nn
-import torch.optim as optim
+
 import torch.nn.init
-import math
+import torch.optim as optim
+from torch import nn
+from torchvision import transforms
+from tqdm import tqdm
+
+import models
 
 device = models.device
 
@@ -48,7 +39,7 @@ if __name__ == '__main__':
 
     transform = transforms.Compose([transforms.ToTensor()])
     batch_size = 128
-    train_dataloader, test_dataloader = models.LoadMNIST('../../LR/data/MNIST', transform, batch_size, False)
+    train_dataloader, test_dataloader = models.LoadMNIST('../../LR/data/MNIST', transform, batch_size, True)
     for i in range(len(model_zoo)):
         for j in range(len(model_zoo[i])):
             print('new model training:{}'.format(model_zoo_name[i][j]))

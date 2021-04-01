@@ -1,29 +1,21 @@
-import Resnet18
-import Resnet34
-import torch
-from torch.autograd import Variable
-from torch.autograd import Function
-import torch.nn as nn
-import torch.nn.functional as F
-import numpy as np
-from abc import ABCMeta, abstractmethod
-from torchvision import datasets, transforms
-from torch.utils.data import DataLoader
-from tqdm import tqdm
 import os
-from torch.utils.data import Dataset
-import time
 import pickle as pkl
-from torch import nn
-import torch.optim as optim
+
 import torch.nn.init
-import math
+import torch.optim as optim
+from torch import nn
+from torch.utils.data import DataLoader
+from torchvision import datasets, transforms
+from tqdm import tqdm
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+import Resnet18
+
+if torch.cuda.is_available():
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+else:
+    pass
+
 device = Resnet18.device
-
-
-
 
 if __name__ == '__main__':
 

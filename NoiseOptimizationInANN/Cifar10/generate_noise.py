@@ -16,7 +16,10 @@ from imagecorruptions import corrupt
 import skimage as sk
 from skimage.filters import gaussian
 
-device = torch.device('cuda:4')
+if torch.cuda.is_available():
+    device = torch.device('cuda:0')
+else:
+    device = None
 
 
 def gaussian_noise(x, severity=1):
@@ -46,7 +49,7 @@ def glass_blur(x, severity=1):
                 dx, dy = np.random.randint(-c[1], c[1], size=(2,))
                 h_prime, w_prime = h + dy, w + dx
                 # swap
-                x[:, :, h, w], x[:, :, h_prime, w_prime] = x[:, :, h_prime,  w_prime], x[:, :, h, w]
+                x[:, :, h, w], x[:, :, h_prime, w_prime] = x[:, :, h_prime, w_prime], x[:, :, h, w]
 
     return np.clip(gaussian(x / 255., sigma=c[0], multichannel=True), 0, 1) * 255
 
@@ -341,7 +344,7 @@ if __name__ == '__main__':
                 x_adversarial = torch.clamp(xv, 0, 1)
 
                 # Classification after optimization
-                y_pred_adversarial = 0 # np.argmax(net(Variable(x_adversarial)).data.numpy())
+                y_pred_adversarial = 0  # np.argmax(net(Variable(x_adversarial)).data.numpy())
                 # print "Before: {} | after: {}".format(y_pred, y_pred_adversarial)
 
                 # print "Y_TRUE: {} | Y_PRED: {}".format(_y_true, y_pred)

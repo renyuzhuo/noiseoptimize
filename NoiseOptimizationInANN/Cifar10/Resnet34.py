@@ -17,7 +17,10 @@ import torch.optim as optim
 import torch.nn.init
 import math
 
-device = torch.device('cuda:0')
+if torch.cuda.is_available():
+    device = torch.device('cuda:0')
+else:
+    device = None
 
 
 class UnOptimizedNoiseLayer(nn.Module):

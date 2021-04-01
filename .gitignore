@@ -1,0 +1,5 @@
+LR/
+*.zip
+NoiseOptimizationInANN/tinyImageNet/tiny-imagenet-200/
+*.DS_Store
+.DS_Store
