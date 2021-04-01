@@ -19,11 +19,8 @@ import torch.optim as optim
 import torch.nn.init
 import math
 
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 device = Resnet18.device
-
-
-
 
 if __name__ == '__main__':
 
@@ -32,10 +29,10 @@ if __name__ == '__main__':
     resnet18_name = ['Resnet18.getResNet18PlusA', 'Resnet18.getResNet18NA']
 
     transform_train = transforms.Compose([
-        transforms.RandomCrop(32, padding=4),  # 先四周填充0，在吧图像随机裁剪成32*32
-        transforms.RandomHorizontalFlip(),  # 图像一半的概率翻转，一半的概率不翻转
+        transforms.RandomCrop(32, padding=4), 
+        transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),  # R,G,B每层的归一化用到的均值和方差
+        transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)), 
     ])
 
     transform_test = transforms.Compose([
@@ -110,6 +107,7 @@ if __name__ == '__main__':
         if not os.path.exists('./mnist_logs'):
             os.mkdir('mnist_logs')
         torch.save(model.state_dict(), './mnist_model/{}.pth'.format(resnet18_name[j]))
-        print('模型已经保存')
+        print('resule:')
         with open('./mnist_logs/{}.pkl'.format(resnet18_name[j]), 'wb') as file:
             pkl.dump([train_loss_list, test_loss_list, acc_list], file)
+
