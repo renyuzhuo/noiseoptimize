@@ -1,5 +1,3 @@
+NoiseOptimizationInANN/Cifar10/__pycache__/
 LR/
-*.zip
-NoiseOptimizationInANN/tinyImageNet/tiny-imagenet-200/
-*.DS_Store
-.DS_Store
+venv/
