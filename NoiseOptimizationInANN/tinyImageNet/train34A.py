@@ -10,7 +10,7 @@ import LoadTinyImageNet
 import Resnet34
 
 if torch.cuda.is_available():
-    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 else:
     pass
 
