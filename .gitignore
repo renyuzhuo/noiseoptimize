@@ -1,3 +1,8 @@
 NoiseOptimizationInANN/Cifar10/__pycache__/
 LR/
 venv/
+NoiseOptimizationInANN/MNIST/__pycache__/
+NoiseOptimizationInANN/tinyImageNet/tiny-imagenet-200.zip
+NoiseOptimizationInANN/tinyImageNet/tiny-imagenet-200/
+*.pkl
+NoiseOptimizationInANN/tinyImageNet/__pycache__/
