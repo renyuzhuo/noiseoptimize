@@ -1,0 +1,17 @@
+创建训练集
+创建测试集
+new model training:Resnet34.getResnetPlus34FC
+Traceback (most recent call last):
+  File "/study/noiseoptimize/NoiseOptimizationInANN/tinyImageNet/train34FC.py", line 46, in <module>
+    model = model.to(device)
+  File "/study/noiseoptimize/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 673, in to
+    return self._apply(convert)
+  File "/study/noiseoptimize/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 387, in _apply
+    module._apply(fn)
+  File "/study/noiseoptimize/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 387, in _apply
+    module._apply(fn)
+  File "/study/noiseoptimize/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 409, in _apply
+    param_applied = fn(param)
+  File "/study/noiseoptimize/venv/lib/python3.9/site-packages/torch/nn/modules/module.py", line 671, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+RuntimeError: CUDA error: out of memory

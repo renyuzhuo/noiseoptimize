@@ -1,0 +1,11 @@
+new model training:models.CNNAN
+Traceback (most recent call last):
+  File "/study/noiseoptimize/NoiseOptimizationInANN/MNIST/train.py", line 46, in <module>
+    model = model_zoo[i][j]()
+  File "/study/noiseoptimize/NoiseOptimizationInANN/MNIST/models.py", line 392, in __init__
+    OptimizedNoiseLayer((32, 28, 28)),
+  File "/study/noiseoptimize/NoiseOptimizationInANN/MNIST/models.py", line 364, in __init__
+    self.reset_parameters()
+  File "/study/noiseoptimize/NoiseOptimizationInANN/MNIST/models.py", line 369, in reset_parameters
+    self.sigma = self.sigma.to(device)
+RuntimeError: CUDA error: out of memory

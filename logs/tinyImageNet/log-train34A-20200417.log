@@ -1,0 +1,15 @@
+创建训练集
+创建测试集
+new model training:Resnet34.getResnetN34A
+Traceback (most recent call last):
+  File "/study/noiseoptimize/NoiseOptimizationInANN/tinyImageNet/train34A.py", line 35, in <module>
+    model = resnet18_model[j]()
+  File "/study/noiseoptimize/NoiseOptimizationInANN/tinyImageNet/Resnet34.py", line 756, in getResnetN34A
+    return ResNetN34A(ResBlockNA)
+  File "/study/noiseoptimize/NoiseOptimizationInANN/tinyImageNet/Resnet34.py", line 701, in __init__
+    OptimizedNoiseLayer((64, 32, 32)),
+  File "/study/noiseoptimize/NoiseOptimizationInANN/tinyImageNet/Resnet34.py", line 150, in __init__
+    self.reset_parameters()
+  File "/study/noiseoptimize/NoiseOptimizationInANN/tinyImageNet/Resnet34.py", line 155, in reset_parameters
+    self.sigma = self.sigma.to(device)
+RuntimeError: CUDA error: out of memory
