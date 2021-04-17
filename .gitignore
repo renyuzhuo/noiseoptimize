@@ -6,3 +6,6 @@ NoiseOptimizationInANN/tinyImageNet/tiny-imagenet-200.zip
 NoiseOptimizationInANN/tinyImageNet/tiny-imagenet-200/
 *.pkl
 NoiseOptimizationInANN/tinyImageNet/__pycache__/
+
+NoiseOptimizationInANN/Cifar10/mnist_model/
+NoiseOptimizationInANN/tinyImageNet/SGDmnist_model/
